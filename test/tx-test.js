@@ -11,6 +11,7 @@ var TX = require('../lib/primitives/tx');
 var Block = require('../lib/primitives/block');
 var Coin = require('../lib/primitives/coin');
 var Output = require('../lib/primitives/output');
+var Outpoint = require('../lib/primitives/outpoint');
 var Script = require('../lib/script/script');
 var Witness = require('../lib/script/witness');
 var Input = require('../lib/primitives/input');
@@ -358,7 +359,7 @@ describe('TX', function() {
     var hash = crypto.randomBytes(32).toString('hex');
     var output = new Output();
     output.value = value;
-    view.addOutput(hash, 0, output);
+    view.addOutput(new Outpoint(hash, 0), output);
     return {
       prevout: {
         hash: hash,

@@ -32,19 +32,6 @@ function applyUndo(block, undo) {
 
     for (j = tx.inputs.length - 1; j >= 0; j--) {
       input = tx.inputs[j];
-      prev = input.prevout.hash;
-
-      if (!view.has(prev)) {
-        assert(!undo.isEmpty());
-
-        if (undo.top().height === -1) {
-          coins = new Coins();
-          coins.hash = prev;
-          coins.coinbase = false;
-          view.add(coins);
-        }
-      }
-
       undo.apply(view, input.prevout);
     }
   }

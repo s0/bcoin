@@ -23,8 +23,8 @@ node = new bcoin.fullnode({
 });
 
 // Temporary hack
-//if (!node.has('walletdb'))
-//  node.use(plugin);
+if (!node.has('walletdb'))
+  node.use(plugin);
 
 node.on('error', function(err) {
   ;
